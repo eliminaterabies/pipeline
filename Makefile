@@ -72,9 +72,7 @@ cleanHead_Animal.Rout: R/cleanHead.R Animal_CT.csv
 
 ## Some basic cleaning
 animal.Rout: R/animal.R cleanHead_Animal.Rout.csv
-## del R/readAnimal.R R/animaldat.R ##
-
-
+	$(rrule)
 
 ######################################################################
 
