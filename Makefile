@@ -86,8 +86,11 @@ animal.look.Rout: R/look.R animal.rds
 ## Branching: I'm very stuck here! 2022 Nov 15 (Tue)
 ## Try config files
 
+branch/%.Rout: branch/%.R
+	$(rrule)
+
 ## SD_dogs.dat.Rout: R/dat.R branch/SD_dogs.R
-%.dat.Rout: dat.R branch/%.rda
+%.dat.Rout: R/dat.R animal.rds branch/%.rda
 	$(rrule)
 
 ######################################################################

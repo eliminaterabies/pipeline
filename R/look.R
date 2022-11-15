@@ -3,5 +3,4 @@ library(shellpipes)
 
 animals <- rdsRead()
 
-names(animals)
-
+summary(animals %>% mutate_if(is.character, as.factor))
