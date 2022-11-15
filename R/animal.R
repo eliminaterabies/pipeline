@@ -7,16 +7,16 @@ animals <- (csvRead()
 		, Date.bitten = as.Date(Date.bitten, "%d-%b-%Y")
   		, Symptoms.started = as.Date(Symptoms.started, "%d-%b-%Y")
 		, Year.bitten = as.numeric(format(Date.bitten, "%Y"))
-		, Year.Symptoms = as.numeric(format(Symptoms.started, "%Y"))
+		, Year.symptoms = as.numeric(format(Symptoms.started, "%Y"))
 	)
-	%>% filter(TRUE
-		& ID>0
+	%>% filter(ID>0
 		& !is.na(Year.bitten)
 		& !is.na(Year.symptoms)
 	)
-	%>% dplyr:::select(Year.bitten, Year.Symptoms, everything(.))
+	%>% dplyr:::select(Year.bitten, Year.symptoms, everything(.))
 )
 
+print(names(animals))
 print(dim(animals))
 
 csvSave(animals)

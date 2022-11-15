@@ -12,7 +12,7 @@ current: target
 Ignore = target.mk
 
 vim_session:
-	bash -cl "vmt"
+	bash -cl "vmt content.mk"
 
 ######################################################################
 
@@ -59,7 +59,7 @@ Human_CT.csv:
 ## R set up
 
 ## Revisit; what R directories do we want?
-Sources += $(wildcard R/*.R)
+Sources += $(wildcard R/*.R branch/*.R)
 
 rrule = $(pipeRcall)
 rrule = $(pipeR)
@@ -72,6 +72,22 @@ cleanHead_Animal.Rout: R/cleanHead.R Animal_CT.csv
 
 ## Some basic cleaning
 animal.Rout: R/animal.R cleanHead_Animal.Rout.csv
+	$(rrule)
+
+######################################################################
+
+## Examine: on hold 2022 Nov 15 (Tue)
+
+animal.look.Rout: R/look.R animal.rds
+	$(rrule)
+
+######################################################################
+
+## Branching: I'm very stuck here! 2022 Nov 15 (Tue)
+## Try config files
+
+## SD_dogs.dat.Rout: R/dat.R branch/SD_dogs.R
+%.dat.Rout: dat.R branch/%.rda
 	$(rrule)
 
 ######################################################################

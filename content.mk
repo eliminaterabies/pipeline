@@ -1,18 +1,4 @@
 
-## Side branch
-cleanHead_Human.Rout: Human_CT.csv R/cleanHead.R
-	$(run-R)
-
-readAnimal.Rout: R/readAnimal.R cleanHead_Animal.Rout.csv
-	$(rrule)
-
-## 2021 Oct 22 (Fri) Eliminate check_dir stuff
-## Serengeti_animal_dat.Rout: R/animaldat.R
-%_dat.Rout: R/animaldat.R readAnimal.rds
-	$(rrule)
-
-######################################################################
-
 outputTargets += Serengeti_animal_dat Serengeti_dogs_dat Serengeti_animal_incubation Serengeti_dogs_incubation
 outputProducts = $(outputTargets:%=output/%.csv)
 output/Serengeti_animal_dat.Rout.csv: Makefile
