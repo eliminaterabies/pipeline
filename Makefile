@@ -121,6 +121,7 @@ branch/%.Rout: branch/%.R
 ## Process incubation periods (FIXME what is the check file?)
 ## SD_dogs.incubation.Rout: R/incubation.R
 ## SD_dogs.incubation.check.csv: R/incubation.R
+Ignore += *.incubation.check.csv
 %.incubation.check.csv: %.incubation.Rout ;
 %.incubation.Rout: R/incubation.R %.dat.rds R/convert.R
 	$(rrule)
@@ -141,6 +142,7 @@ branch/%.Rout: branch/%.R
 %.infCheck.Rout: R/infCheck.R %.dat.rds 
 	$(rrule)
 
+Ignore += SD_dogs.allchecks
 ## SD_dogs.allchecks:
 %.allchecks: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout ;
 	$(touch)
