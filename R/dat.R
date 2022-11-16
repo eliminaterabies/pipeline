@@ -16,7 +16,7 @@ if(exists("SpeciesF"))
 if(exists("firstYear"))
 	animals <- filter(animals, 
 		(!is.na(Year.bitten) & (Year.bitten >= firstYear))
-		| ((!is.na(Year.Symptoms) & (Year.Symptoms > firstYear)))
+		| ((!is.na(Year.symptoms) & (Year.symptoms > firstYear)))
 	)
 
 dim(animals)
