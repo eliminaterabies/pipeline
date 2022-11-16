@@ -7,58 +7,12 @@ $(outputProducts): output/%.csv: %.Rout
 	cat $*.Rout.csv >> $@
 
 outputProducts: $(outputProducts)
-
-## Serengeti_animal_IDCheck.Rout: R/IDCheck.R
-%_IDCheck.Rout: R/IDCheck.R %_dat.rds R/helpfuns.R
-	$(rrule)
-
-## Serengeti_animal_ageCheck.Rout: R/ageCheck.R
-%_ageCheck.Rout: R/ageCheck.R %_dat.rds R/helpfuns.R
-	$(rrule)
-
-## Serengeti_animal_suspectCheck.Rout: R/suspectCheck.R
-%_suspectCheck.Rout: R/suspectCheck.R %_dat.rds R/helpfuns.R
-	$(rrule)
-
-## Serengeti_animal_outcomeCheck.Rout: R/outcomeCheck.R
-%_outcomeCheck.Rout: R/outcomeCheck.R %_dat.rds R/helpfuns.R
-	$(rrule)
-
-## Serengeti_animal_incCheck.Rout: R/incCheck.R
-%_incCheck.Rout:  R/incCheck.R %_dat.rds R/helpfuns.R R/convert.R
-	$(rrule)
-
-## Serengeti_animal_incubation.Rout: R/incubation.R
-Ignore += *_incubation.check.csv
-%_incubation.check.csv: %_incubation.Rout ;
-%_incubation.Rout: R/incubation.R %_dat.rds R/helpfuns.R R/convert.R
-	$(rrule)
-
-## Serengeti_animal_wildlifeCheck.Rout: R/wildlifeCheck.R
-%_wildlifeCheck.Rout: R/wildlifeCheck.R %_dat.rds R/helpfuns.R
-	$(rrule)
-
-## Serengeti_animal_dateCheck.Rout: R/dateCheck.R
-%_dateCheck.Rout: R/dateCheck.R %_dat.rds R/helpfuns.R
-	$(rrule)
-
-## Serengeti_animal_symptomCheck.Rout: R/symptomCheck.R
-%_symptomCheck.Rout: R/symptomCheck.R %_dat.rds R/helpfuns.R
-	$(rrule)
-
-## Serengeti_animal_infCheck.Rout: R/infCheck.R
-%_infCheck.Rout: R/infCheck.R %_dat.rds R/helpfuns.R
-	$(rrule)
-
 ## Dog.allchecks: 
 ## Animal.allchecks: 
-%.allchecks: Serengeti_%_dat.Rout Serengeti_%_IDCheck.Rout Serengeti_%_ageCheck.Rout Serengeti_%_suspectCheck.Rout Serengeti_%_outcomeCheck.Rout Serengeti_%_incCheck.Rout Serengeti_%_wildlifeCheck.Rout Serengeti_%_dateCheck.Rout Serengeti_%_symptomCheck.Rout Serengeti_%_infCheck.Rout Serengeti_%_incubation.Rout ;
-
 
 ############################################################
+
 ## Additional downstream project issues
-
-
 ## Not sure why this is here
 # Serengeti_animal_unsuspect.Rout: R/unsuspect.R
 %_unsuspect.Rout:	%_incubation.Rout R/unsuspect.R 
