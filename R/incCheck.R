@@ -3,22 +3,11 @@
 
 library(tidyverse)
 library(shellpipes)
-rpcall("Serengeti_Animal_incCheck.Rout R/incCheck.R Serengeti_Animal_dat.rds R/helpfuns.R R/convert.R")
-rpcall("Serengeti_Dog_incCheck.Rout R/incCheck.R Serengeti_Dog_dat.rds R/helpfuns.R R/convert.R")
 
 sourceFiles()
 animals <- rdsRead()
 
-convertDay <- Vectorize(function(x){
-	if(is.na(x)|(x=="")){return(NA)}
-	if(x=="Day"){return(1)}
-	if(x=="Week"){return(7)}
-	if(x=="Month"){return(365.25/12)}
-	stop("Can't convert unit", x)
-})
-
-
-# calcuate incubation period from dates
+# calculate incubation period from dates
 dateInc <- (animals
 	 %>% mutate(dateInc = as.numeric(
 			Symptoms.started - Date.bitten

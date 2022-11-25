@@ -2,8 +2,6 @@ library(dplyr)
 library(ggplot2); theme_set(theme_bw())
 
 library(shellpipes)
-rpcall("Serengeti_Animal_incubation.Rout R/incubation.R Serengeti_Animal_dat.rds R/helpfuns.R R/convert.R")
-rpcall("Serengeti_Dog_incubation.Rout R/incubation.R Serengeti_Dog_dat.rds R/helpfuns.R R/convert.R")
 sourceFiles()
 animals <- rdsRead()
 
