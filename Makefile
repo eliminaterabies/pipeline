@@ -144,6 +144,7 @@ outdir/%/checkfile:
 ## Make report
 
 ## SD_dogs.report.html: report.rmd
+Ignore += *.report.html
 %.report.html: report.rmd outdir/%/checkfile
 	$(knithtml)
 
