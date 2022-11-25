@@ -1,0 +1,14 @@
+---
+title: "Rabies Database Pipeline Check Report"
+author: "Michael Li, Jonathan Dushoff, Katie Hampson"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y')`"
+output: 
+  html_document
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(shellpipes)
+repName <- pipeStar()
+```
+
+This is the `r repName` report.
