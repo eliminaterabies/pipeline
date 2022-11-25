@@ -11,7 +11,7 @@ vim_session:
 ## R set up
 
 ## Revisit; what R directories do we want?
-Sources += $(wildcard R/*.R branch/*.R)
+Sources += $(wildcard R/*.R branch/*.R *.rmd)
 
 rrule = $(pipeRcall)
 rrule = $(pipeR)
