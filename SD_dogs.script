@@ -1,0 +1,15 @@
+R --vanilla --args cleanHead_Animal.Rout shellpipes .pipestar R/cleanHead.R Animal_CT.csv < R/cleanHead.R > cleanHead_Animal.Rout
+R --vanilla --args animal.Rout shellpipes .pipestar R/animal.R cleanHead_Animal.Rout.csv < R/animal.R > animal.Rout
+R --vanilla --args branch/SD_dogs.Rout shellpipes SD_dogs.pipestar branch/SD_dogs.R < branch/SD_dogs.R > branch/SD_dogs.Rout
+R --vanilla --args SD_dogs.dat.Rout shellpipes SD_dogs.pipestar R/dat.R animal.rds branch/SD_dogs.rda < R/dat.R > SD_dogs.dat.Rout
+R --vanilla --args SD_dogs.IDCheck.Rout shellpipes SD_dogs.pipestar R/IDCheck.R SD_dogs.dat.rds < R/IDCheck.R > SD_dogs.IDCheck.Rout
+R --vanilla --args SD_dogs.ageCheck.Rout shellpipes SD_dogs.pipestar R/ageCheck.R SD_dogs.dat.rds < R/ageCheck.R > SD_dogs.ageCheck.Rout
+R --vanilla --args SD_dogs.suspectCheck.Rout shellpipes SD_dogs.pipestar R/suspectCheck.R SD_dogs.dat.rds < R/suspectCheck.R > SD_dogs.suspectCheck.Rout
+R --vanilla --args SD_dogs.outcomeCheck.Rout shellpipes SD_dogs.pipestar R/outcomeCheck.R SD_dogs.dat.rds < R/outcomeCheck.R > SD_dogs.outcomeCheck.Rout
+R --vanilla --args SD_dogs.incCheck.Rout shellpipes SD_dogs.pipestar R/incCheck.R SD_dogs.dat.rds R/convert.R < R/incCheck.R > SD_dogs.incCheck.Rout
+R --vanilla --args SD_dogs.wildlifeCheck.Rout shellpipes SD_dogs.pipestar R/wildlifeCheck.R SD_dogs.dat.rds < R/wildlifeCheck.R > SD_dogs.wildlifeCheck.Rout
+R --vanilla --args SD_dogs.dateCheck.Rout shellpipes SD_dogs.pipestar R/dateCheck.R SD_dogs.dat.rds < R/dateCheck.R > SD_dogs.dateCheck.Rout
+R --vanilla --args SD_dogs.symptomCheck.Rout shellpipes SD_dogs.pipestar R/symptomCheck.R SD_dogs.dat.rds < R/symptomCheck.R > SD_dogs.symptomCheck.Rout
+R --vanilla --args SD_dogs.infCheck.Rout shellpipes SD_dogs.pipestar R/infCheck.R SD_dogs.dat.rds < R/infCheck.R > SD_dogs.infCheck.Rout
+R --vanilla --args SD_dogs.incubation.Rout shellpipes SD_dogs.pipestar R/incubation.R SD_dogs.dat.rds R/convert.R < R/incubation.R > SD_dogs.incubation.Rout
+Rscript --vanilla -e 'library("rmarkdown"); render("report.rmd", output_format="html_document", output_file="SD_dogs.report.html")' shellpipes SD_dogs.pipestar report.rmd outdir/SD_dogs/checkfile

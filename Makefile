@@ -6,6 +6,7 @@ Sources += Makefile README.md TODO.md
 ######################################################################
 
 include setup.mk
+-include makestuff/perl.def
 
 ######################################################################
 
@@ -148,9 +149,15 @@ Ignore += *.report.html
 %.report.html: report.rmd outdir/%/checkfile
 	$(knithtml)
 
+## This is not piped yet! 2022 Nov 28 (Mon)
+Sources += $(wildcard *.script)
+SD_dogs.noscript: makestuff/pipeRscript.pl clonedir/make.log
+	$(PUSH)
+
 ######################################################################
 
-## Cribbing
+## Cribbing; this should be removed once we have finished cannibalizing
+## the private repo
 
 ## Transfer version of p1/Makefile
 Sources += content.mk
