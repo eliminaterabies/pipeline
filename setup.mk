@@ -3,7 +3,7 @@ Sources += $(wildcard *.mk)
 
 current: target
 -include target.mk
-Ignore = target.mk
+Ignore += target.mk
 
 vim_session:
 	bash -cl "vmt content.mk"
