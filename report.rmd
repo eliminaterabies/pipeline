@@ -6,9 +6,128 @@ output:
   html_document
 ---
 
-```{r, echo=FALSE, message=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(shellpipes)
 repName <- pipeStar()
+outpath <- paste0("outdir/",repName,"/",repName)
+csvpath <- function(x){paste0(outpath,".",x,".Rout.csv")}
 ```
 
 This is the `r repName` report.
+
+# Steps
+
+* Download a version of the animal contact tracing dateset from Wise Monkey and rename it "Animal_CT.csv" in dropbox.
+
+* Run pipeline to generate all the problematic cases that fail the checks.
+* Fix the cases on Wise Monkey and repeat first two steps.
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+## ID Check
+
+This check keeps a list of repeat IDs because dogs was repeatedly exposed.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+IDcheck <- read_csv(csvpath("IDCheck"))
+repAnimals <- (IDcheck
+  %>% select(code, ID)
+  %>% distinct()
+  %>% summarise(Count = n())
+)
+```
+
+The file [IDcheck](`r csvpath("IDCheck")`) shows `r nrow(IDcheck)` records corresponding to `r repAnimals` unique animals that were apparently exposed repeatedly.
+
+
+## Suspect Cases
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+SuspectCheck <- read_csv(csvpath("suspectCheck"))
+```
+
+Suspected cases showed signs of rabies (and therefore have a date of signs onset), and were exposed/bitten by another animal, bit another animal, or have at least one of the ten criteria indicative of suspect rabies (IF THEY WERE RECORDED AFTER DAT X - CAN YOU CHECK WHAT THIS IS!?).
+<p style="color:red">MLi: The first case with suspect Yes/Todo with suspect critaria records is ID 224, on 2003-08-19, but records after 2010-01-01 looks more plausible. I am using 2010-01-01 as a soft cutoff.</p>
+
+The file [suspectCheck](`r csvpath("suspectCheck") `) shows `r nrow(SuspectCheck)` records corresponding to `r SuspectCheck %>% select(ID) %>% distinct() %>% nrow()` unique animals with at least one of the following problems:
+
+* __Suspect1__: `r SuspectCheck %>% filter(code == "Suspect1") %>% nrow()` records where _Suspect_ was recorded as __Yes__ and _Outcome_ as __Alive__.
+
+* __Suspect2__: `r SuspectCheck %>% filter(code == "Suspect2") %>% nrow()` records where _Suspect_ was recorded as __Yes__ and _Outcome_ as __Todo__.
+
+* __Suspect3__: `r SuspectCheck %>% filter(code == "Suspect3") %>% nrow()` records where _Symptoms started_ is __TRUE__ but no date or accuracy is recorded.
+
+* __Suspect4__: `r SuspectCheck %>% filter(code == "Suspect4") %>% nrow()` records where _Symptoms started_ is __NA__ but _Suspect_ is __Yes__ or __To do__ and _Outcome_ is __Alive__.
+
+    - __Suspect4__ are cases that were exposed/bitten by a suspected animal but did not show symptoms yet. We should be follow up on these cases first! 
+    
+* __Suspect5__: `r SuspectCheck %>% filter(code == "Suspect5") %>% nrow()` records where _Suspect_ was recorded as __Yes__ and 0/10 suspect criteria are TRUE (How well does the 10 suspect criteria match symptoms?)
+** EDIT THIS TO ONLY APPLY TO DATA POST-DATE OF ELECTRONIC IMPLEMENTATION. I DON'T RECALL THIS - BUT YOU SHOULD BE ABLE TO WORK IT OUT!!! EITHER WAY THIS SHOULD BE A LATE STAGE CHECK!
+<p style="color:red">MLi: I am checking all cases after 2010-01-01. It is not as clear as I thought working it out in the dataset.</p>
+
+## Outcome Check
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+OutcomeCheck <- read_csv(csvpath("outcomeCheck"))
+```
+
+The file [outcomeCheck](`r csvpath("outcomeCheck") `) shows `r nrow(OutcomeCheck)` records corresponding to `r OutcomeCheck %>% select(ID) %>% distinct() %>% nrow()` unique animals where the outcome and action does not make sense and requires investigation.
+
+* __OC1__: `r OutcomeCheck %>% filter(code == "OC1") %>% nrow()` records where _Outcome_ is __Alive__ or __Disappeared__ and _Action_ is not __NA__. For example, there are cases where _Outcome_ is __Alive__ and _Action_ is __Buried__!
+
+* __OC2__: `r OutcomeCheck %>% filter(code == "OC2") %>% nrow()` records where _Outcome_ is __Alive__ nor __Disappeared__ and _Action_ is __NA__. 
+
+
+## Wildlife Check
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+wildlifeCheck <- read_csv(csvpath("wildlifeCheck"))
+```
+
+Wildlife should not contain any information about itself (e.g. name, vaccination status) and owner. 
+
+The file [wildlifeCheck](`r csvpath("wildlifeCheck")` shows `r nrow(wildlifeCheck)` records corresponding to `r wildlifeCheck %>% select(ID) %>% distinct() %>% nrow()` unique animals where the information does not match its wildlife status.
+
+* __WL1__: `r wildlifeCheck %>% filter(code == "WL1") %>% nrow()` records where _Species_ is __wildlife__ with information about its name, owner, vaccination status or unknown if it is recorded as other species.
+
+* __WL2__: `r wildlifeCheck %>% filter(code == "WL2") %>% nrow()` records where _Species_ is not __wildlife__ with a known owner but no information about owner's name or its vaccination status.
+
+* __WL3__: `r wildlifeCheck %>% filter(code == "WL3") %>% nrow()` records where _Species_ is not __wildlife__ and without owner but information about its name, vaccination status and accuracy information about date bitten and symptom started.
+
+## Infectious Period Check
+
+Reported infectious periods should be <10 days. 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+infCheck <- read_csv(csvpath("infCheck"))
+```
+
+The file [infCheck](`r csvpath("infCheck")` shows `r nrow(infCheck)` records corresponding to `r infCheck %>% select(ID) %>% distinct() %>% nrow()` animals with infectious periods > 10 days.
+
+## Incubation Period Check
+
+MLi: TODO need a better naming rule for incubation
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#incubation <- read_csv(csvpath("incubation.check"))
+incubation <- read_csv("outdir/SD_dogs/SD_dogs.incubation.check.csv")
+```
+
+The file [incubation](outdir/SD_dogs/SD_dogs.incubation.check.csv) shows `r nrow(incubation)` records corresponding to `r incubation %>% select(ID) %>% distinct() %>% nrow()` animals where incubation period is recorded as either < 3 days or the incubation period calculated from the date bitten and symptom date (dateInc) doesn't match the reported incubation period. 
+
+* __inc1__: `r incubation %>% filter(code == "inc1") %>% nrow()` records where reported incubation period is less than 3 days. 
+
+* __inc2__: `r incubation %>% filter(code == "inc2") %>% nrow()` records where reported incubation are suspected to have a unit mismatch. 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+print(incubation 
+      %>% filter(code == "inc2")
+      %>% select(code, ID, dateInc, Incubation.period, Incubation.period.units)
+)
+```
+
+
