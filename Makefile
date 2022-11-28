@@ -133,9 +133,9 @@ Ignore += *.allchecks
 	$(touch)
 
 outdir/%/checkfile:
-	$(MAKE) outdir/%
+	$(MAKE) outdir/$*
 	$(MAKE) $*.allchecks
-	rsync $*.*.csv outdir/%/
+	rsync $*.*.csv outdir/$*/
 
 ## outdir/SD_dogs/checkfile:
 
