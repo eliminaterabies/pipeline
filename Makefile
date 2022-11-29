@@ -33,6 +33,7 @@ Ignore += Animal_CT.csv Human_CT.csv
 ## del Animal_CT.csv ## to update for new data
 Animal_CT.csv: datadir/*Animal*.csv
 	$(LNF) `ls -t datadir/*Animal*.csv | head -1` $@
+	$(touch)
 
 ## del Human_CT.csv ## to update for new data
 Human_CT.csv:
@@ -137,12 +138,11 @@ Ignore += *.allchecks
 %.allchecks: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout ;
 	$(touch)
 
-outdir/%/checkfile:
-	$(MAKE) outdir/$*
-	$(MAKE) $*.allchecks
+outdir/%/stamp: %.allchecks
 	rsync $*.*.csv outdir/$*/
+	date > $@
 
-## outdir/SD_dogs/checkfile:
+## outdir/SD_dogs/stamp:
 
 ######################################################################
 
@@ -150,7 +150,7 @@ outdir/%/checkfile:
 
 ## SD_dogs.report.html: report.rmd
 Ignore += *.report.html
-%.report.html: report.rmd outdir/%/checkfile
+%.report.html: report.rmd outdir/%/stamp
 	$(knithtml)
 
 ## This is not piped yet! 2022 Nov 28 (Mon)
