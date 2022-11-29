@@ -61,8 +61,8 @@ animal.look.Rout: R/look.R animal.rds
 ## Branching: 
 ## Try config files for now
 
-.PRECIOUS: branch/%.Rout
-branch/%.rda branch/%.rds: branch/%.Rout; $(lscheck)
+.PRECIOUS: branch/%.Rout branch/%.rda
+branch/%.rda: $(lscheck)
 branch/%.Rout: branch/%.R
 	$(rrule)
 
