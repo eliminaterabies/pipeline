@@ -181,7 +181,7 @@ msrepo = https://github.com/dushoff
 Makefile: makestuff/00.stamp
 makestuff/%.stamp:
 	- $(RM) makestuff/*.stamp
-	(cd makestuff && $(MAKE) pull) || git clone $(msrepo)/makestuff
+	(cd makestuff && $(MAKE) pull) || git clone --depth 0 $(msrepo)/makestuff
 	touch $@
 
 -include makestuff/os.mk
