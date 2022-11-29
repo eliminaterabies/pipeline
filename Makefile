@@ -57,8 +57,8 @@ animal.look.Rout: R/look.R animal.rds
 
 ######################################################################
 
-## Branching: I'm very stuck here! 2022 Nov 15 (Tue)
-## Try config files
+## Branching: 
+## Try config files for now
 
 .PRECIOUS: branch/%.Rout
 branch/%.Rout: branch/%.R

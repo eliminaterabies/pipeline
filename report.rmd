@@ -15,13 +15,11 @@ csvpath <- function(x){paste0(outpath,".",x,".Rout.csv")}
 
 This is the `r repName` report.
 
-# Steps
-
-* Download a version of the animal contact tracing dateset from Wise Monkey and rename it "Animal_CT.csv" in dropbox.
-
-* Run pipeline to generate all the problematic cases that fail the checks.
-* Fix the cases on Wise Monkey and repeat first two steps.
-
+1. Run pipeline to see problematic cases
+1. When cases are fixed on Wise Monkey:
+	* Update the Dropbox
+	* delete the file Animal_CT.csv
+	* remake the report with "make `r repName`.report.html"
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -129,5 +127,4 @@ print(incubation
       %>% select(code, ID, dateInc, Incubation.period, Incubation.period.units)
 )
 ```
-
 
