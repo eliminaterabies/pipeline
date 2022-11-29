@@ -168,8 +168,8 @@ p1:
 	|| git clone https://github.com/wzmli/rabies_db_pipeline $@
 
 .PRECIOUS: R/%.R
-R/%.R: p1/R/%.R
-	$(copy)
+R/%.R:
+	/bin/cp p1/R/$*.R .
 
 ######################################################################
 
