@@ -21,6 +21,9 @@ Ignore += local.mk
 
 include dropbox.mk
 
+dropsetup: datadir outdir
+	$(MAKE) Animal_CT.csv Human_CT.csv
+
 ##################################################################
 
 ## Copies of main inputs (don't commit!)
@@ -181,7 +184,7 @@ msrepo = https://github.com/dushoff
 Makefile: makestuff/00.stamp
 makestuff/%.stamp:
 	- $(RM) makestuff/*.stamp
-	(cd makestuff && $(MAKE) pull) || git clone --depth 0 $(msrepo)/makestuff
+	(cd makestuff && $(MAKE) pull) || git clone --depth 1 $(msrepo)/makestuff
 	touch $@
 
 -include makestuff/os.mk
