@@ -61,11 +61,12 @@ animal.look.Rout: R/look.R animal.rds
 ## Try config files for now
 
 .PRECIOUS: branch/%.Rout
+branch/%.rda branch/%.rds: branch/%.Rout; $(lscheck)
 branch/%.Rout: branch/%.R
 	$(rrule)
 
 ## SD_dogs.dat.Rout: R/dat.R branch/SD_dogs.R
-.PRECIOUS: %.dat.Rout
+pipeRimplicit += dat
 %.dat.Rout: R/dat.R animal.rds branch/%.rda
 	$(rrule)
 
@@ -74,28 +75,28 @@ branch/%.Rout: branch/%.R
 ## Checks
 
 ## SD_dogs.IDCheck.Rout: R/IDCheck.R
-.PRECIOUS: %.IDCheck.Rout
+pipeRimplicit += IDCheck
 %.IDCheck.Rout: R/IDCheck.R %.dat.rds
 	$(rrule)
 
 ## SD_dogs.ageCheck.Rout: R/ageCheck.R
-.PRECIOUS: %.ageCheck.Rout
+pipeRimplicit += ageCheck
 %.ageCheck.Rout: R/ageCheck.R %.dat.rds 
 	$(rrule)
 
 ## SD_dogs.suspectCheck.Rout: R/suspectCheck.R
-.PRECIOUS: %.suspectCheck.Rout
+pipeRimplicit += suspectCheck
 %.suspectCheck.Rout: R/suspectCheck.R %.dat.rds 
 	$(rrule)
 
 ## SD_dogs.outcomeCheck.Rout: R/outcomeCheck.R
-.PRECIOUS: %.outcomeCheck.Rout
+pipeRimplicit += outcomeCheck
 %.outcomeCheck.Rout: R/outcomeCheck.R %.dat.rds 
 	$(rrule)
 
 ## Basic check for incubation periods
 ## SD_dogs.incCheck.Rout: R/incCheck.R
-.PRECIOUS: %.incCheck.Rout
+pipeRimplicit += incCheck
 %.incCheck.Rout:  R/incCheck.R %.dat.rds R/convert.R
 	$(rrule)
 
@@ -109,22 +110,22 @@ Ignore += *.incubation.check.csv
 	$(rrule)
 
 ## SD_dogs.wildlifeCheck.Rout: R/wildlifeCheck.R
-.PRECIOUS: %.wildlifeCheck.Rout
+pipeRimplicit += wildlifeCheck
 %.wildlifeCheck.Rout: R/wildlifeCheck.R %.dat.rds 
 	$(rrule)
 
 ## SD_dogs.dateCheck.Rout: R/dateCheck.R
-.PRECIOUS: %.dateCheck.Rout
+pipeRimplicit += dateCheck
 %.dateCheck.Rout: R/dateCheck.R %.dat.rds 
 	$(rrule)
 
 ## SD_dogs.symptomCheck.Rout: R/symptomCheck.R
-.PRECIOUS: %.symptomCheck.Rout
+pipeRimplicit += symptomCheck
 %.symptomCheck.Rout: R/symptomCheck.R %.dat.rds 
 	$(rrule)
 
 ## SD_dogs.infCheck.Rout: R/infCheck.R
-.PRECIOUS: %.infCheck.Rout
+pipeRimplicit += infCheck
 %.infCheck.Rout: R/infCheck.R %.dat.rds 
 	$(rrule)
 
