@@ -15,6 +15,7 @@ You will need to have access to data files in a Dropbox. The default location of
 ### File setup
 1. Clone this repo
 1. Sort out your Data linkage issues (see above)
+1. `make Makefile`
 1. `make dropsetup`
 1. `ls -l *.csv`
 	* This should show two data files in the main directory, and where they point to in the Dropbox
