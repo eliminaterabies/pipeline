@@ -21,7 +21,7 @@ You will need:
 1. The program R
 1. The tidyverse set of packages
 	* `install.packages("tidyverse")
-1. The [shellpipes package](https://dushoff.github.io/shellpipes/]
+1. The [shellpipes package](https://dushoff.github.io/shellpipes/)
 
 ## Making a report
 
