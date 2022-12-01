@@ -16,6 +16,7 @@ include setup.mk
 ## Store if needed in <yourname>.local
 Sources += $(wildcard *.local)
 ## katie.config: katie.local
+## jd.config: jd.local
 
 Ignore += local.mk
 -include local.mk
@@ -24,6 +25,10 @@ include dropbox.mk
 
 dropsetup: datadir outdir
 	$(MAKE) Animal_CT.csv Human_CT.csv
+
+##################################################################
+
+README.html: README.md
 
 ##################################################################
 
