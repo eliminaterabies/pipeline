@@ -8,6 +8,8 @@ output:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(shellpipes)
+rpcall("SD_dogs.report.html report.rmd outdir/SD_dogs/stamp")
+
 repName <- pipeStar()
 outpath <- paste0("outdir/",repName,"/",repName)
 csvpath <- function(x){paste0(outpath,".",x,".Rout.csv")}
