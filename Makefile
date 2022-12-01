@@ -15,6 +15,7 @@ include setup.mk
 ## Set location in personal local.mk
 ## Store if needed in <yourname>.local
 Sources += $(wildcard *.local)
+## katie.config: katie.local
 
 Ignore += local.mk
 -include local.mk
