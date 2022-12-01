@@ -11,3 +11,5 @@ outdir: dir=$(Drop)/$(Dropdir)/output
 outdir:
 	- $(linkdirname)
 
+%.config: %.local
+	$(LNF) $< local.mk
