@@ -1,8 +1,5 @@
 ls ~/Dropbox/Projects/rabies_mcmaster > /dev/null && /bin/ln -fs ~/Dropbox/Projects/rabies_mcmaster datadir 
 ls ~/Dropbox/Projects/rabies_mcmaster/output > /dev/null && /bin/ln -fs ~/Dropbox/Projects/rabies_mcmaster/output outdir 
-ls ~/Dropbox/Rabies_TZ > /dev/null && /bin/ln -fs ~/Dropbox/Rabies_TZ datadir 
-ls ~/Dropbox/Rabies_TZ/output > /dev/null && /bin/ln -fs ~/Dropbox/Rabies_TZ/output outdir 
 /bin/ln -fs `ls -t datadir/*Animal*.csv | head -1` Animal_CT.csv
 touch Animal_CT.csv
 /bin/ln -fs datadir/*Human*.csv Human_CT.csv
-
