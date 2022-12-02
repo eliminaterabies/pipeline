@@ -2,6 +2,9 @@ library(readr)
 library(dplyr)
 library(shellpipes)
 
+## Use this call to make animal.Rout independently
+rpcall("animal.Rout R/animal.R cleanHead_Animal.Rout.csv")
+
 animals <- (csvRead()
 	%>% mutate(NULL
 		, Date.bitten = as.Date(Date.bitten, "%d-%b-%Y")

@@ -7,9 +7,13 @@ datadir:
 	- $(linkdirname)
 
 Ignore += outdir
-outdir: dir=$(Drop)/$(Dropdir)/output
-outdir:
+outdir=$(Drop)/$(Dropdir)/output
+outdir: dir=$(outdir)
+outdir: | $(outdir)
 	- $(linkdirname)
+
+$(outdir):
+	$(mkdir)
 
 %.config: %.local
 	$(LNF) $< local.mk
