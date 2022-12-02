@@ -8,14 +8,13 @@ output:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(shellpipes)
-rpcall("SD_dogs.report.html report.rmd outdir/SD_dogs/stamp")
 
 repName <- pipeStar()
 outpath <- paste0("outdir/",repName,"/",repName)
 csvpath <- function(x){paste0(outpath,".",x,".Rout.csv")}
 ```
 
-This is the `r repName` report.
+This is the `r repName` report created `r date()` from WiseMonkey file  Bill
 
 1. Run pipeline to see problematic cases
 1. When cases are fixed on Wise Monkey:
@@ -90,7 +89,7 @@ wildlifeCheck <- read_csv(csvpath("wildlifeCheck"))
 
 Wildlife should not contain any information about itself (e.g. name, vaccination status) and owner. 
 
-The file [wildlifeCheck](`r csvpath("wildlifeCheck")` shows `r nrow(wildlifeCheck)` records corresponding to `r wildlifeCheck %>% select(ID) %>% distinct() %>% nrow()` unique animals where the information does not match its wildlife status.
+The file [wildlifeCheck](`r csvpath("wildlifeCheck")`) shows `r nrow(wildlifeCheck)` records corresponding to `r wildlifeCheck %>% select(ID) %>% distinct() %>% nrow()` unique animals where the information does not match its wildlife status.
 
 * __WL1__: `r wildlifeCheck %>% filter(code == "WL1") %>% nrow()` records where _Species_ is __wildlife__ with information about its name, owner, vaccination status or unknown if it is recorded as other species.
 
