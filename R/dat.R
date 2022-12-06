@@ -21,3 +21,4 @@ if(exists("firstYear"))
 
 dim(animals)
 rdsSave(animals)
+csvSave(animals)
