@@ -7,7 +7,7 @@ datadir:
 	- $(linkdirname)
 
 Ignore += outdir
-outdir=$(Drop)/$(Dropdir)/output
+outdir=$(Drop)/$(Dropdir)/pipeline
 outdir: dir=$(outdir)
 outdir: | $(outdir)
 	- $(linkdirname)
