@@ -3,8 +3,7 @@
 library(dplyr)
 library(tidyverse)
 library(shellpipes)
-rpcall("Serengeti_Animal_outcomeCheck.Rout R/outcomeCheck.R Serengeti_Animal_dat.rds R/helpfuns.R")
-rpcall("Serengeti_Dog_outcomeCheck.Rout R/outcomeCheck.R Serengeti_Dog_dat.rds R/helpfuns.R")
+rpcall("SD_dogs.outcomeCheck.Rout R/outcomeCheck.R SD_dogs.dat.rds")
 sourceFiles()
 animals <- rdsRead()
 

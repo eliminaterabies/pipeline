@@ -1,8 +1,7 @@
 ## Check Dates
 library(dplyr)
 library(shellpipes)
-rpcall("Serengeti_Animal_dateCheck.Rout R/dateCheck.R Serengeti_Animal_dat.rds R/helpfuns.R")
-rpcall("Serengeti_Dog_dateCheck.Rout R/dateCheck.R Serengeti_Dog_dat.rds R/helpfuns.R")
+rpcall("SD_dogs.dateCheck.Rout R/dateCheck.R SD_dogs.dat.rds")
 sourceFiles()
 animals <- rdsRead()
 

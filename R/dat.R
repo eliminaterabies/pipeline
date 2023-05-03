@@ -1,6 +1,7 @@
 library(dplyr)
 library(tidyverse)
 library(shellpipes)
+rpcall("SD_dogs.dat.Rout R/dat.R animal.rds branch/SD_dogs.rda")
 
 animals <- rdsRead()
 loadEnvironments()

@@ -2,6 +2,7 @@ library(dplyr)
 library(ggplot2); theme_set(theme_bw())
 
 library(shellpipes)
+rpcall("SD_dogs.incubation.Rout R/incubation.R SD_dogs.dat.rds R/convert.R")
 sourceFiles()
 animals <- rdsRead()
 

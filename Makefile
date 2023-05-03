@@ -190,7 +190,17 @@ R/%.R:
 
 ######################################################################
 
-## Testing
+## rpcall clean
+
+Sources += $(wildcard *.pl)
+
+rfiles = $(wildcard R/*.R)
+rpclean = $(rfiles:.R=.rpclean)
+
+rpclean: $(rpclean)
+
+%.rpclean: %.R rpclean.pl
+	$(PIPUSH)
 
 ######################################################################
 

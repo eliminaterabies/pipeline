@@ -3,6 +3,7 @@
 
 library(tidyverse)
 library(shellpipes)
+rpcall("SD_dogs.incCheck.Rout R/incCheck.R SD_dogs.dat.rds R/convert.R")
 
 sourceFiles()
 animals <- rdsRead()

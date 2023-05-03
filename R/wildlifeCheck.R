@@ -2,8 +2,7 @@
 
 library(dplyr)
 library(shellpipes)
-rpcall("Serengeti_Animal_wildlifeCheck.Rout R/wildlifeCheck.R Serengeti_Animal_dat.rds R/helpfuns.R")
-rpcall("Serengeti_Dog_wildlifeCheck.Rout R/wildlifeCheck.R Serengeti_Dog_dat.rds R/helpfuns.R")
+rpcall("SD_dogs.wildlifeCheck.Rout R/wildlifeCheck.R SD_dogs.dat.rds")
 sourceFiles()
 animals <- rdsRead()
 

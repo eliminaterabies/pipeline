@@ -2,10 +2,8 @@
 
 library(dplyr)
 library(shellpipes)
-rpcall("Serengeti_Animal_suspectCheck.Rout R/suspectCheck.R Serengeti_Animal_dat.rds R/helpfuns.R")
-rpcall("Serengeti_Dog_suspectCheck.Rout R/suspectCheck.R Serengeti_Dog_dat.rds R/helpfuns.R")
+rpcall("SD_dogs.suspectCheck.Rout R/suspectCheck.R SD_dogs.dat.rds")
 
-sourceFiles()
 animals <- rdsRead()
 
 suspectOnly <- (animals

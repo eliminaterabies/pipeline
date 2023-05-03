@@ -1,11 +1,7 @@
 
-Get rid of all rpcalls and install new ones using rrule
-
-Pipeline not clean (when I change allchecks, upstream things run!)
-
 Can we make a pipeline focused just on intervals, downstream of this one?
 
-Split and/or farm out Suspect5
+Split and/or farm out Suspect5??
 
 incCheck is not working; prior scripts are working on a new paradigm which is probably not going to play well with report
 
