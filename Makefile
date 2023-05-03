@@ -207,7 +207,7 @@ rpclean: $(rpclean)
 Ignore += makestuff
 msrepo = https://github.com/dushoff
 
-Makefile: makestuff/00.stamp outdir
+Makefile: makestuff/01.stamp outdir
 makestuff/%.stamp:
 	- $(RM) makestuff/*.stamp
 	(cd makestuff && $(MAKE) pull) || git clone --depth 1 $(msrepo)/makestuff
