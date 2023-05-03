@@ -53,5 +53,7 @@ You should be able to edit report.rmd in a straightforward manner in rstudio or 
 
 ## Updating WiseMonkey
 
-To change the focal WiseMonkey file, you need to delete `Animal_CT.csv` in the main directory, and make sure that the file you want to use is the most recent file matching *Animal*.csv in the datadir (you can access via here or your Dropbox folder). If you download a new WiseMonkey file and delete, it should just work. To focus another WiseMonkey file, you can update its modification time (use `touch` from the command line, or do something Mac-ish if you know how).
+To change the focal WiseMonkey file, you need to delete `Animal_CT.csv` in the main directory, and make sure that the file you want to use is the most recent file matching *Animal*.csv in the datadir (you can access via here or your Dropbox folder). If you download a new WiseMonkey file and delete Animal_CT.csv, it should just work. 
+
+To focus another WiseMonkey file, you can update its modification time (use `touch` from the command line, or do something Mac-ish if you know how). This should rarely be necessary, and remember to touch the latest file when you're done whatever test you are doing.
 
