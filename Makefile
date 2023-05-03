@@ -170,11 +170,6 @@ Ignore += *.report.html
 %.report.html: report.rmd outdir/%/stamp
 	$(knithtml)
 
-## This is not piped yet! 2022 Nov 28 (Mon)
-Sources += $(wildcard *.script)
-SD_dogs.noscript: makestuff/pipeRscript.pl clonedir/make.log
-	$(PUSH)
-
 ######################################################################
 
 ## Cribbing; this should be removed once we have finished cannibalizing
