@@ -1,3 +1,3 @@
-target = SD_dogs.outcomeCheck.Rout 
+target = Makefile 
 target gptarget pushtarget pngtarget pdftarget vtarget acrtarget: $(target)
 

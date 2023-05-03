@@ -1,9 +1,7 @@
 
-Is this the repo Katie is talking about?
+Pipeline not clean (when I change allchecks, upstream things run!)
 
-Can we make a pipeline focused just on intervals, downstream of this one.
-
-Is this the moment for stepR? Obviously not, right?
+Can we make a pipeline focused just on intervals, downstream of this one?
 
 Split and/or farm out Suspect5
 

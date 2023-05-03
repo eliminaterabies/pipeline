@@ -47,7 +47,4 @@ dateIncCheck <- (dateInc
 	)
 )
 
-if(nrow(dateIncCheck) > 0){
-	write.csv(dateIncCheck,file=paste0(check_dir,csvname))
-}
-
+csvSave(dateIncCheck)

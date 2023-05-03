@@ -144,11 +144,11 @@ pipeRimplicit += infCheck
 
 ## Curate output csvs
 
-Ignore += *.allchecks
-%.allchecks: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout ;
-	$(touch)
+## SD_dogs.allchecks.Rout: allchecks.R
+%.allchecks.Rout: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout allchecks.R
+	$(pipeR)
 
-outdir/%/stamp: %.allchecks
+outdir/%/stamp: %.allchecks.Rout
 	rsync $*.*.csv outdir/$*/
 	date > $@
 
@@ -157,6 +157,10 @@ outdir/%/stamp: %.allchecks
 ######################################################################
 
 ## Make report
+
+## SD_dogs.report.MD: report.rmd
+%.MD: %.html
+	pandoc -f html -o $@ $<
 
 ## SD_dogs.report.html: report.rmd
 Ignore += *.report.html

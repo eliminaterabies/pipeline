@@ -41,6 +41,8 @@ To add a new report to the pipeline, it should be sufficient to make (and commit
 
 ## Working on the pipeline
 
+You should be able to edit any of the R scripts listed in the 
+
 ## Editing the report
 
 You should be able to edit report.rmd in a straightforward manner in rstudio or any text editor. There are probably issues that will arise if and when we start working on other branches.
