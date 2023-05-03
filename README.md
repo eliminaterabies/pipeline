@@ -1,5 +1,3 @@
-https://github.com/eliminaterabies/rabiesTZ
-https://github.com/eliminaterabies/rabiesTZ/blob/master/README.md
 
 ## Ground rules
 
@@ -44,6 +42,8 @@ To add a new report to the pipeline, it should be sufficient to make (and commit
 You can see the shape of the pipeline by examining the file `outputs/SD_dogs.allchecks.pipeR.script` and then opening that file. 
 
 You should be able to edit any of the R scripts listed in the script file and then run any part of the R pipeline by using the script file, or by using make and the target name of your choice, e.g., `make SD_dogs.wildlifeCheck.Rout.csv`. 
+
+You should also be able to run any R script directly from rstudio, modify it and run it again. The `rpcall` statement at the top tells it where to read and save things. To save changes, re-run the save-like commands at the bottom, and to incorporate upstream changes, re-run the load-like commands at the top (or just always run the script top-to-bottom).
 
 `.csv` files are made first in the main directory. The report right now can only be made by `make`; this has a step to copy the .csv files to where the report wants them. `csv` files in the main directory can be deleted without harming the report, once it's made.
 
