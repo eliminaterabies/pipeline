@@ -145,6 +145,7 @@ pipeRimplicit += infCheck
 ## Curate output csvs
 
 ## SD_dogs.allchecks.Rout: R/allchecks.R
+pipeRimplicit += allchecks
 %.allchecks.Rout: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout allchecks.R
 	$(pipeR)
 
