@@ -1,4 +1,5 @@
-Sources += $(wildcard *.mk)
+Sources += dropbox.mk setup.mk
+
 ## Vim hooks
 
 current: target
@@ -6,7 +7,7 @@ current: target
 Ignore += target.mk
 
 vim_session:
-	bash -cl "vmt content.mk"
+	bash -cl "vmt README.md"
 
 ## R set up
 

@@ -147,7 +147,7 @@ pipeRimplicit += infCheck
 ## SD_dogs.allchecks.Rout: R/allchecks.R
 pipeRimplicit += dat
 %.allchecks.Rout: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout R/allchecks.R
-	$(pipeR)
+	$(rrule)
 
 outdir/%/stamp: %.allchecks.Rout
 	rsync $*.*.csv outdir/$*/
