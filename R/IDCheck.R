@@ -3,9 +3,6 @@
 library(dplyr)
 library(tidyverse)
 library(shellpipes)
-rpcall("Serengeti_animal_IDCheck.Rout R/IDCheck.R Serengeti_animal_dat.rds R/helpfuns.R")
-rpcall("Serengeti_Animal_IDCheck.Rout R/IDCheck.R Serengeti_Animal_dat.rds R/helpfuns.R")
-rpcall("Serengeti_Dog_IDCheck.Rout R/IDCheck.R Serengeti_Dog_dat.rds R/helpfuns.R")
 
 sourceFiles()
 animals <- rdsRead()

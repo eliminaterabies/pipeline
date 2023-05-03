@@ -114,6 +114,7 @@ pipeRimplicit += incCheck
 ## Process incubation periods (FIXME what is the check file?)
 ## SD_dogs.incubation.Rout: R/incubation.R
 ## SD_dogs.incubation.check.csv: R/incubation.R
+pipeRimplicit += incubation
 Ignore += *.incubation.check.csv
 .PRECIOUS: %.incubation.check.csv
 %.incubation.check.csv: %.incubation.Rout ;
