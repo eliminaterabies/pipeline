@@ -1,3 +1,3 @@
-target = SD_dogs.allchecks.pipeR.script 
+target = SD_dogs.report.html 
 target gptarget pushtarget pngtarget pdftarget vtarget acrtarget: $(target)
 

@@ -25,7 +25,7 @@ Ignore += local.mk
 
 include dropbox.mk
 
-dropsetup: datadir outdir
+dropsetup: datadir
 	$(MAKE) Animal_CT.csv Human_CT.csv
 
 ##################################################################

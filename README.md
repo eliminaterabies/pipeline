@@ -41,8 +41,17 @@ To add a new report to the pipeline, it should be sufficient to make (and commit
 
 ## Working on the pipeline
 
-You should be able to edit any of the R scripts listed in the 
+You can see the shape of the pipeline by examining the file `outputs/SD_dogs.allchecks.pipeR.script` and then opening that file. 
+
+You should be able to edit any of the R scripts listed in the script file and then run any part of the R pipeline by using the script file, or by using make and the target name of your choice, e.g., `make SD_dogs.wildlifeCheck.Rout.csv`. 
+
+`.csv` files are made first in the main directory. The report right now can only be made by `make`; this has a step to copy the .csv files to where the report wants them. `csv` files in the main directory can be deleted without harming the report, once it's made.
 
 ## Editing the report
 
-You should be able to edit report.rmd in a straightforward manner in rstudio or any text editor. There are probably issues that will arise if and when we start working on other branches.
+You should be able to edit report.rmd in a straightforward manner in rstudio or any text editor. There are probably issues that will arise if and when we start working on other branches. If you have _only_ changed the report, you should be able to knit it in rstudio. If you have changed R files, you will need to use `make` once to get the .csv files all made and put in the right place.
+
+## Updating WiseMonkey
+
+To change the focal WiseMonkey file, you need to delete `Animal_CT.csv` in the main directory, and make sure that the file you want to use is the most recent file matching *Animal*.csv in the datadir (you can access via here or your Dropbox folder). If you download a new WiseMonkey file and delete, it should just work. To focus another WiseMonkey file, you can update its modification time (use `touch` from the command line, or do something Mac-ish if you know how).
+
