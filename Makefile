@@ -155,6 +155,8 @@ outdir/%/stamp: %.allchecks.Rout
 
 ## SD_dogs.allchecks.pipeR.script:
 
+testsetup: dropsetup
+
 ######################################################################
 
 ## Make report
