@@ -152,7 +152,7 @@ outdir/%/stamp: %.allchecks.Rout
 	rsync $*.*.csv outdir/$*/
 	date > $@
 
-## outdir/SD_dogs/stamp:
+## SD_dogs.allchecks.pipeR.script:
 
 ######################################################################
 
