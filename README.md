@@ -39,7 +39,7 @@ To add a new report to the pipeline, it should be sufficient to make (and commit
 
 ## Working on the pipeline
 
-You can see the shape of the pipeline by examining the file `outputs/SD_dogs.allchecks.pipeR.script` and then opening that file. 
+You can see the shape of the pipeline by examining the file `SD_dogs.allchecks.pipeR.script` and then opening that file. 
 
 You should be able to edit any of the R scripts listed in the script file and then run any part of the R pipeline by using the script file, or by using make and the target name of your choice, e.g., `make SD_dogs.wildlifeCheck.Rout.csv`. 
 
