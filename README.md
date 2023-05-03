@@ -38,3 +38,9 @@ The current report structure is based on configuration scripts in a subdirectory
 `make SD_dogs.report.html.go` will often work to make the report _and_ automatically open it on your screen.
 
 To add a new report to the pipeline, it should be sufficient to make (and commit) a new config file branch/<yourbranch>.R, and then follow steps above.
+
+## Working on the pipeline
+
+## Editing the report
+
+You should be able to edit report.rmd in a straightforward manner in rstudio or any text editor. There are probably issues that will arise if and when we start working on other branches.

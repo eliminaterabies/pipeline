@@ -42,7 +42,7 @@ dateIncCheck <- (dateInc
 	%>% mutate(inc_period = Incubation.period * as.numeric(convertDay(Incubation.period.units))
 	, incdiff = dateInc-inc_period
 	)
-	%>% dplyr::filter(!is.na(incdiff) && (abs(dateInc-inc_period)>15))
+	%>% dplyr::filter(!is.na(incdiff) & (abs(dateInc-inc_period)>15))
 	%>% dplyr::select(Notes, ID, District, inc_period, dateInc, Date.bitten, Symptoms.started, Incubation.period, Incubation.period.units, everything()
 	)
 )

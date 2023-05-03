@@ -1,3 +1,16 @@
+
+Is this the repo Katie is talking about?
+
+Can we make a pipeline focused just on intervals, downstream of this one.
+
+Is this the moment for stepR? Obviously not, right?
+
+Split and/or farm out Suspect5
+
+incCheck is not working; prior scripts are working on a new paradigm which is probably not going to play well with report
+
+######################################################################
+
 Clean out old rpcalls
 
 Upgrade or delete SourceFiles() [or not, to simplify Makefile]
