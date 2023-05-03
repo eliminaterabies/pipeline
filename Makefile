@@ -176,7 +176,7 @@ Ignore += *.report.html
 ## the private repo
 
 ## Transfer version of p1/Makefile
-Sources += content.mk
+## Sources += content.mk
 
 Ignore += p1
 p1:
