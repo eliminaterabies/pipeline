@@ -18,8 +18,6 @@ Sources += $(wildcard *.local)
 ## katie.config: katie.local
 ## jd.config: jd.local
 
-Sources += katie.setup
-
 Ignore += local.mk
 -include local.mk
 
