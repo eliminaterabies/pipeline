@@ -27,7 +27,11 @@ You will need:
 	* `install.packages("tidyverse")
 1. The [shellpipes package](https://dushoff.github.io/shellpipes/)
 
-## Making a report
+## R script workflow
+
+The script `SD_dogs.allchecks.Rscript` sources all of the files needed to make the report, and moves them to their final locations _at the end_ (the system call).
+
+## Make workflow
 
 The current report structure is based on configuration scripts in a subdirectory called (branch)[branch/]; so far this only one: SD_dogs ([here](branch/SD_dogs.R) is the selection file).
 
@@ -39,8 +43,6 @@ To add a new report to the pipeline, it should be sufficient to make (and commit
 
 ## Working on the pipeline
 
-You can see the shape of the pipeline by examining the file `SD_dogs.allchecks.pipeR.script` and then opening that file. 
-
 You should be able to edit any of the R scripts listed in the script file and then run any part of the R pipeline by using the script file, or by using make and the target name of your choice, e.g., `make SD_dogs.wildlifeCheck.Rout.csv`. 
 
 You should also be able to run any R script directly from rstudio, modify it and run it again. The `rpcall` statement at the top tells it where to read and save things. To save changes, re-run the save-like commands at the bottom, and to incorporate upstream changes, re-run the load-like commands at the top (or just always run the script top-to-bottom).
@@ -49,7 +51,7 @@ You should also be able to run any R script directly from rstudio, modify it and
 
 ## Editing the report
 
-You should be able to edit report.rmd in a straightforward manner in rstudio or any text editor. There are probably issues that will arise if and when we start working on other branches. If you have _only_ changed the report, you should be able to knit it in rstudio. If you have changed R files, you will need to use `make` once to get the .csv files all made and put in the right place.
+You should be able to edit report.rmd in a straightforward manner in rstudio or any text editor. For now, you should use `make` to produce the html file. I'm still working on that.
 
 ## Updating WiseMonkey
 
