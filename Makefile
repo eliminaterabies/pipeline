@@ -170,6 +170,10 @@ Sources += $(wildcard *.Rscript)
 %.allR: %.Rscript
 	R --vanilla  < $<
 
+## SD_dogs.report.allR.html: report.rmd
+%.report.allR.html: report.rmd %.allchecks.allR
+	$(knithtml)
+
 ######################################################################
 
 ## Make report
