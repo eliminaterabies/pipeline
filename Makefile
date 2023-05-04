@@ -160,6 +160,7 @@ testsetup: dropsetup
 
 ## All-R version
 
+Sources += $(wildcard *.Rscript)
 ## SD_dogs.allchecks.Rscript: SD_dogs.allchecks.pipeR.script allR.pl
 %.allchecks.Rscript: %.allchecks.pipeR.script allR.pl
 	$(PUSH)
