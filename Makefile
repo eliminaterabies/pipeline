@@ -160,10 +160,14 @@ testsetup: dropsetup
 
 ## All-R version
 
-## SD_dogs.allchecks.Rscript: SD_dogs.pipeR.script allR.pl
-%.allchecks.Rscript: %.pipeR.script allR.pl
+## SD_dogs.allchecks.Rscript: SD_dogs.allchecks.pipeR.script allR.pl
+%.allchecks.Rscript: %.allchecks.pipeR.script allR.pl
 	$(PUSH)
+	echo 'system("rsync $*.*.csv outdir/$*/")' >> $@
 
+## SD_dogs.allchecks.allR:
+%.allR: %.Rscript
+	R --vanilla  < $<
 
 ######################################################################
 
