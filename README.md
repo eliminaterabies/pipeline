@@ -31,6 +31,8 @@ You will need:
 
 The script `SD_dogs.allchecks.Rscript` sources all of the files needed to make the report, and moves them to their final locations _at the end_ (the system call).
 
+The generic script `report.rmd` is set up for the hack-a-thon to focus on SD_dogs. Thus, you should be able edit it and knit it however you like
+
 ## Make workflow
 
 The current report structure is based on configuration scripts in a subdirectory called (branch)[branch/]; so far this only one: SD_dogs ([here](branch/SD_dogs.R) is the selection file).

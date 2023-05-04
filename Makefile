@@ -172,7 +172,7 @@ Sources += $(wildcard *.Rscript)
 
 ## SD_dogs.report.allR.html: report.rmd
 %.report.allR.html: report.rmd %.allchecks.allR
-	$(knithtml)
+	Rscript --vanilla -e 'library("rmarkdown"); render("$(word 1, $(filter %.rmd %.Rmd, $^))", output_format="html_document", output_file="$@")' 
 
 ######################################################################
 
