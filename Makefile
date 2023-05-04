@@ -158,6 +158,15 @@ testsetup: dropsetup
 
 ######################################################################
 
+## All-R version
+
+## SD_dogs.allchecks.Rscript: SD_dogs.pipeR.script allR.pl
+%.allchecks.Rscript: %.pipeR.script allR.pl
+	$(PUSH)
+
+
+######################################################################
+
 ## Make report
 
 ## SD_dogs.report.MD: report.rmd
