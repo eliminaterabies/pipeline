@@ -3,12 +3,23 @@
 
 This is a _public_ repo; make sure that linked data sources are secure and that outputs are properly ignored.
 
+## Data linkage
+
+You will need to have access to data files in a Dropbox. The default location of this Dropbox is ~/Dropbox/Rabies_TZ/. If your data is elsewhere (or if you're using a different Dropbox), you will need to either set up links, or make a local configuration file. If `ls ~/Dropbox/Rabies_TZ/Tanzania_Animal*.csv` shows you a bunch of WiseMonkey files, you're probably OK.
+
+If not, but you already have a personal .local file, say `make <yourname>.config` after `make Makefile` (see below). NB: There is a file called `katie.local`
+
+Note that the Dropbox is also currently used to share and collate output files. If you just link Animal_CT.csv to a WiseMonkey file, you will be able to do checks, and examine local copies of the outputs, but not move the files to the shared Dropbox or use the current version of the report.
 
 ## Getting started
 
 ### File setup
 1. Clone this repo
 1. `make Makefile`
+1. Sort out your Data linkage issues (see above)
+1. `make dropsetup`
+1. `ls -l *.csv`
+	* This should show two data files in the main directory, and where they point to in the Dropbox
 
 ### R setup
 You will need:
@@ -17,21 +28,6 @@ You will need:
 1. The tidyverse set of packages
 	* `install.packages("tidyverse")
 1. The [shellpipes package](https://dushoff.github.io/shellpipes/)
-
-### Data linkage
-
-For the hack-a-thon, the key point is that you want your desired version of the WiseMonkey file linked to `Animal_CT.csv` in the main repo directory; don't worry about how you update it, it's not tracked (and .gitignore'd; please do NOT push it). You can follow the rules below if you feel like doing it our way.
-
-### Long-term data-linkage
-
-You will need to have access to data files in a Dropbox. The default location of this Dropbox is ~/Dropbox/Rabies_TZ/. If your data is elsewhere (or if you're using a different Dropbox), you will need to either set up links, or make a local configuration file. If `ls ~/Dropbox/Rabies_TZ/Tanzania_Animal*.csv` shows you a bunch of WiseMonkey files, you're probably OK.
-
-If not, but you already have a personal .local file, say `make <yourname>.config` after `make Makefile` (see below). NB: There is a file called `katie.local`
-
-1. Sort out your Data linkage issues (see above)
-1. `make dropsetup`
-1. `ls -l *.csv`
-	* This should show two data files in the main directory, and where they point to in the Dropbox
 
 ## R script workflow
 
