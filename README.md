@@ -3,21 +3,12 @@
 
 This is a _public_ repo; make sure that linked data sources are secure and that outputs are properly ignored.
 
-## Data linkage
-
-You will need to have access to data files in a Dropbox. The default location of this Dropbox is ~/Dropbox/Rabies_TZ/. If your data is elsewhere (or if you're using a different Dropbox), you will need to either set up links, or make a local configuration file. If `ls ~/Dropbox/Rabies_TZ/Tanzania_Animal*.csv` shows you a bunch of WiseMonkey files, you're probably OK.
-
-If not, but you already have a personal .local file, say `make <yourname>.config` after `make Makefile` (see below). NB: There is a file called `katie.local`
 
 ## Getting started
 
 ### File setup
 1. Clone this repo
 1. `make Makefile`
-1. Sort out your Data linkage issues (see above)
-1. `make dropsetup`
-1. `ls -l *.csv`
-	* This should show two data files in the main directory, and where they point to in the Dropbox
 
 ### R setup
 You will need:
@@ -27,11 +18,28 @@ You will need:
 	* `install.packages("tidyverse")
 1. The [shellpipes package](https://dushoff.github.io/shellpipes/)
 
+### Data linkage
+
+For the hack-a-thon, the key point is that you want your desired version of the WiseMonkey file linked to `Animal_CT.csv` in the main repo directory; don't worry about how you update it, it's not tracked (and .gitignore'd; please do NOT push it). You can follow the rules below if you feel like doing it our way.
+
+### Long-term data-linkage
+
+You will need to have access to data files in a Dropbox. The default location of this Dropbox is ~/Dropbox/Rabies_TZ/. If your data is elsewhere (or if you're using a different Dropbox), you will need to either set up links, or make a local configuration file. If `ls ~/Dropbox/Rabies_TZ/Tanzania_Animal*.csv` shows you a bunch of WiseMonkey files, you're probably OK.
+
+If not, but you already have a personal .local file, say `make <yourname>.config` after `make Makefile` (see below). NB: There is a file called `katie.local`
+
+1. Sort out your Data linkage issues (see above)
+1. `make dropsetup`
+1. `ls -l *.csv`
+	* This should show two data files in the main directory, and where they point to in the Dropbox
+
 ## R script workflow
 
 The script `SD_dogs.allchecks.Rscript` sources all of the files needed to make the report, and moves them to their final locations _at the end_ (the system call).
 
-The generic script `report.rmd` is set up for the hack-a-thon to focus on SD_dogs. Thus, you should be able edit it and knit it however you like
+The generic script `report.rmd` is set up for the hack-a-thon to focus on SD_dogs. Thus, you should be able edit it and knit it however you like as long as you leave the few magic lines at the beginning.
+
+After the hack-a-thon, I'll build a version that should be easier to modify for other branches.
 
 ## Make workflow
 
@@ -57,7 +65,6 @@ You should be able to edit report.rmd in a straightforward manner in rstudio or 
 
 ## Updating WiseMonkey
 
-To change the focal WiseMonkey file, you need to delete `Animal_CT.csv` in the main directory, and make sure that the file you want to use is the most recent file matching *Animal*.csv in the datadir (you can access via here or your Dropbox folder). If you download a new WiseMonkey file and delete Animal_CT.csv, it should just work. 
+To change the focal WiseMonkey file, you need to delete `Animal_CT.csv` in the main directory, and make sure that the file you want to use is the most recent file matching *Animal*.csv in the datadir (you can access via here or your Dropbox folder). If you download a new WiseMonkey file and delete Animal_CT.csv, make should just work. 
 
 To focus another WiseMonkey file, you can update its modification time (use `touch` from the command line, or do something Mac-ish if you know how). This should rarely be necessary, and remember to touch the latest file when you're done whatever test you are doing.
-
