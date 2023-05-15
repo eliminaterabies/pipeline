@@ -174,6 +174,8 @@ Sources += $(wildcard *.Rscript)
 %.report.allR.html: report.rmd %.allchecks.allR
 	Rscript --vanilla -e 'library("rmarkdown"); render("$(word 1, $(filter %.rmd %.Rmd, $^))", output_format="html_document", output_file="$@")' 
 
+## library("rmarkdown"); render("report.rmd", output_format="html_document", output_file="report.html") 
+
 ######################################################################
 
 ## Make report
