@@ -170,6 +170,7 @@ Sources += $(wildcard *.Rscript)
 %.allR: %.Rscript
 	R --vanilla  < $<
 
+Ignore += *.allR.html
 ## SD_dogs.report.allR.html: report.rmd
 %.report.allR.html: report.rmd %.allchecks.allR
 	Rscript --vanilla -e 'library("rmarkdown"); render("$(word 1, $(filter %.rmd %.Rmd, $^))", output_format="html_document", output_file="$@")' 
