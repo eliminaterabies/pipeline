@@ -28,6 +28,7 @@ dropsetup: datadir
 
 ##################################################################
 
+Ignore += README.html
 README.html: README.md
 
 ##################################################################
@@ -194,23 +195,6 @@ Ignore += *.report.html
 
 ######################################################################
 
-## Cribbing; this should be removed once we have finished cannibalizing
-## the private repo
-
-## Transfer version of p1/Makefile
-## Sources += content.mk
-
-Ignore += p1
-p1:
-	cp -r ../tz_pipeline $@ \
-	|| git clone https://github.com/wzmli/rabies_db_pipeline $@
-
-.PRECIOUS: R/%.R
-R/%.R:
-	/bin/cp p1/R/$*.R .
-
-######################################################################
-
 ## rpcall clean
 
 Sources += $(wildcard *.pl)
@@ -240,6 +224,7 @@ makestuff/%.stamp:
 
 -include makestuff/pipeR.mk
 -include makestuff/compare.mk
+-include makestuff/pandoc.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
