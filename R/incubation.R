@@ -71,10 +71,11 @@ dat <- rbind(lowInc, badunits)
 csvSave(dat, ext="check.csv")
 
 bestInc <- (incs
-	%>% mutate(
-	  bestInc = ifelse(is.na(dateInc), reportedInc, dateInc),
-	  bestInc = ifelse((bestInc < 3), reportedInc, bestInc)
-	)
+	%>% mutate(bestInc = ifelse(!is.na(dateInc) & (dateInc>=3)
+			, dateInc, reportedInc
+	))
 )
+
+summary(bestInc)
 
 csvSave(bestInc)

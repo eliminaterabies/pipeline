@@ -112,6 +112,8 @@ pipeRimplicit += incCheck
 ## Process incubation periods (FIXME what is the check file?)
 ## SD_dogs.incubation.Rout: R/incubation.R
 ## SD_dogs.incubation.check.csv: R/incubation.R
+## SD_dogs.incubation.Rout.csv.compare: R/incubation.R
+
 pipeRimplicit += incubation
 Ignore += *.incubation.check.csv
 .PRECIOUS: %.incubation.check.csv
@@ -237,6 +239,7 @@ makestuff/%.stamp:
 -include makestuff/os.mk
 
 -include makestuff/pipeR.mk
+-include makestuff/compare.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
