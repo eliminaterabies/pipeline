@@ -6,8 +6,11 @@ rpcall("SD_dogs.incubation.Rout R/incubation.R SD_dogs.dat.rds R/convert.R")
 sourceFiles()
 animals <- rdsRead()
 
+flag <- list(low=7, high=180)
+censor <- list(low=4, high=730)
+badRatio <- 3
+
 ## We want to create bestInc from dateInc and reportedInc
-## Shortest reportedInc is 2 days
 ## We have dateInc < 0 days
 ## We have less NAs in dateInc than reportedInc, so we would like to use dateInc for bestInc and "fill in" the handful of problematic cases using reportedInc
 
@@ -43,8 +46,8 @@ print(ggplot(incsonly, aes(x=dateInc, y=reportedInc, size=n))
 	+ scale_size_area()
 )
 
-lowInc <- (incs 
-	%>% filter(dateInc < 3)
+badInc <- (incs 
+	%>% filter(!between(dateInc, flag$low, flag$high))
 	%>% mutate(code = "inc1")
 	%>% select(Notes, code, ID, dateInc, reportedInc, Date.bitten, Symptoms.started, everything())
 )
@@ -61,19 +64,23 @@ print(
 ## Unit problems
 badunits <- (incs
 	%>% filter(dateInc > 0)
-	%>% filter (dateInc/reportedInc > 3 | reportedInc/dateInc > 3)
+	%>% filter (dateInc/reportedInc > badRatio | reportedInc/badRatio > 3)
 	%>% mutate(code = "inc2")
 	%>% select(Notes, code, ID, dateInc, Incubation.period, Incubation.period.units, everything())
 )
 
-dat <- rbind(lowInc, badunits)
+dat <- rbind(badInc, badunits)
 
 csvSave(dat, ext="check.csv")
 
 bestInc <- (incs
-	%>% mutate(bestInc = ifelse(!is.na(dateInc) & (dateInc>=3)
+	%>% mutate(
+		bestInc = if_else(!is.na(dateInc) & (dateInc>=3)
 			, dateInc, reportedInc
-	))
+		), bestInc = if_else(between(bestInc, censor$low, censor$high)
+			, bestInc, NA
+		)
+	)
 )
 
 summary(bestInc)

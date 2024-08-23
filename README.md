@@ -1,4 +1,18 @@
 
+## Delphi decisions 2024 August
+
+Symptomatic waiting periods (and infectious periods if we use them)
+* FLAG > 10
+* DELETE <0 or >30
+
+Generations and incubation periods
+* FLAG <7 or > 180
+* DELETE <4 or >730
+
+Confirm again with Glasgow!
+
+----------------------------------------------------------------------
+
 ## Ground rules
 
 This is a _public_ repo; make sure that linked data sources are secure and that outputs are properly ignored.

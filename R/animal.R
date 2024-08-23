@@ -1,6 +1,7 @@
 library(readr)
 library(dplyr)
 library(shellpipes)
+rpcall("animal.Rout R/animal.R cleanHead_Animal.Rout.csv")
 
 ## Use this call to make animal.Rout independently
 rpcall("animal.Rout R/animal.R cleanHead_Animal.Rout.csv")

@@ -110,10 +110,12 @@ pipeRimplicit += incCheck
 %.incCheck.Rout:  R/incCheck.R %.dat.rds R/convert.R
 	$(rrule)
 
-## Process incubation periods (FIXME what is the check file?)
+## Process incubation periods
+## .check.csv for the checkers
+## .Rout.csv for export to the next project (e.g., link)
 ## SD_dogs.incubation.Rout: R/incubation.R
 ## SD_dogs.incubation.check.csv: R/incubation.R
-## SD_dogs.incubation.Rout.csv.compare: R/incubation.R
+## SD_dogs.incubation.Rout.csv: R/incubation.R
 
 pipeRimplicit += incubation
 Ignore += *.incubation.check.csv
@@ -151,6 +153,7 @@ pipeRimplicit += dat
 %.allchecks.Rout: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout R/allchecks.R
 	$(rrule)
 
+.PRECIOUS: outdir/%/stamp
 outdir/%/stamp: %.allchecks.Rout
 	rsync $*.*.csv outdir/$*/
 	date > $@
