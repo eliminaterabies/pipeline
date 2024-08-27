@@ -1,11 +1,12 @@
 ## check incubation period intervals
 ## Need to document this in the google doc
 
-library(tidyverse)
 library(shellpipes)
-rpcall("SD_dogs.incCheck.Rout R/incCheck.R SD_dogs.dat.rds R/convert.R")
+manageConflicts()
 
-sourceFiles()
+library(tidyverse)
+
+loadEnvironments()
 animals <- rdsRead()
 
 # calculate incubation period from dates

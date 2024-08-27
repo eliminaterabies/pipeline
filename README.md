@@ -8,6 +8,7 @@ Symptomatic waiting periods (and infectious periods if we use them)
 Generations and incubation periods
 * FLAG <7 or > 180
 * DELETE <4 or >730
+These are reflected in R/incubation.R and also in the links repo
 
 Confirm again with Glasgow!
 

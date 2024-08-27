@@ -5,6 +5,7 @@ Sources += Makefile README.md TODO.md
 
 ######################################################################
 
+## Specify pipeRcall or not (in rrule)
 include setup.mk
 -include makestuff/perl.def
 
@@ -104,15 +105,23 @@ pipeRimplicit += outcomeCheck
 %.outcomeCheck.Rout: R/outcomeCheck.R %.dat.rds 
 	$(rrule)
 
-## Basic check for incubation periods
+## Conversion functions old-style file
+convert.Rout: R/convert.R
+	$(wrapR)
+
+## Convert incubation period units and do some checks
+## This and the next file should be refactored 2024 Aug 27 (Tue)
 ## SD_dogs.incCheck.Rout: R/incCheck.R
 pipeRimplicit += incCheck
-%.incCheck.Rout:  R/incCheck.R %.dat.rds R/convert.R
+%.incCheck.Rout:  R/incCheck.R %.dat.rds convert.rda
 	$(rrule)
 
 ## Process incubation periods
-## .check.csv for the checkers
+## Produce .check.csv for the checkers
+## Make some plots!
 ## .Rout.csv for export to the next project (e.g., link)
+## The top of this and the previous file should probably be an intro file
+## Then we want separate files for checking and for censoring
 ## SD_dogs.incubation.Rout: R/incubation.R
 ## SD_dogs.incubation.check.csv: R/incubation.R
 ## SD_dogs.incubation.Rout.csv: R/incubation.R

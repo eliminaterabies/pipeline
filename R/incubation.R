@@ -61,10 +61,10 @@ print(
 	  + scale_size_area()
 )
 
-## Unit problems
+## Flag potential unit problems
 badunits <- (incs
 	%>% filter(dateInc > 0)
-	%>% filter (dateInc/reportedInc > badRatio | reportedInc/badRatio > 3)
+	%>% filter (dateInc/reportedInc > badRatio | reportedInc/dateInc > badRatio)
 	%>% mutate(code = "inc2")
 	%>% select(Notes, code, ID, dateInc, Incubation.period, Incubation.period.units, everything())
 )
