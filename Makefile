@@ -22,6 +22,7 @@ Sources += $(wildcard *.local)
 Ignore += local.mk
 -include local.mk
 
+## Replace this with ../datalinks.mk
 include dropbox.mk
 
 dropsetup: datadir
