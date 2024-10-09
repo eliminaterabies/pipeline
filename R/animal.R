@@ -13,7 +13,9 @@ animals <- (csvRead()
 		, Year.bitten = as.numeric(format(Date.bitten, "%Y"))
 		, Year.symptoms = as.numeric(format(Symptoms.started, "%Y"))
 	)
-	%>% filter(ID>0
+	## Keep things with valid ID and some evidence of bite
+	%>% filter(
+		!is.na(ID) & ID>0
 		& (!is.na(Year.bitten) | !is.na(Year.symptoms))
 	)
 	%>% dplyr:::select(Year.bitten, Year.symptoms, everything(.))

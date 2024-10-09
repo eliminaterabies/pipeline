@@ -60,7 +60,7 @@ animal.Rout: R/animal.R cleanHead_Animal.Rout.csv
 
 ######################################################################
 
-## Examine: on hold 2022 Nov 15 (Tue)
+## Examine: look at text lists of fields; count _distinct_ bitees
 
 animal.look.Rout: R/look.R animal.rds
 	$(rrule)

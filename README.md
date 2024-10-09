@@ -1,4 +1,10 @@
 
+Main pipeline
+
+animal.R is filtering out records where ID is 0, or where Year.bitten and Year.symptoms are both absent. Should we also get rid of NA ID values at this time?
+
+----------------------------------------------------------------------
+
 ## Delphi decisions 2024 August
 
 Symptomatic waiting periods (and infectious periods if we use them)
