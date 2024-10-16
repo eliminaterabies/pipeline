@@ -123,7 +123,7 @@ pipeRimplicit += incCheck
 ## .Rout.csv for export to the next project (e.g., link)
 ## The top of this and the previous file should probably be an intro file
 ## Then we want separate files for checking and for censoring
-## SD_dogs.incubation.Rout: R/incubation.R
+## SD_new_dogs.incubation.Rout: R/incubation.R
 ## SD_dogs.incubation.check.csv: R/incubation.R
 ## SD_dogs.incubation.Rout.csv: R/incubation.R
 
@@ -158,7 +158,7 @@ pipeRimplicit += infCheck
 
 ## Curate output csvs
 
-## SD_dogs.allchecks.Rout: R/allchecks.R
+## SD_new_dogs.allchecks.Rout: R/allchecks.R
 pipeRimplicit += dat
 %.allchecks.Rout: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout R/allchecks.R
 	$(rrule)
@@ -177,12 +177,12 @@ testsetup: dropsetup
 ## All-R version
 
 Sources += $(wildcard *.Rscript)
-## SD_dogs.allchecks.Rscript: SD_dogs.allchecks.pipeR.script makestuff/allR.pl
+## SD_new_dogs.allchecks.Rscript: SD_dogs.allchecks.pipeR.script makestuff/allR.pl
 %.allchecks.Rscript: %.allchecks.pipeR.script makestuff/allR.pl
 	$(PUSH)
 	echo 'system("rsync $*.*.csv outdir/$*/")' >> $@
 
-## SD_dogs.allchecks.allR:
+## SD_new_dogs.allchecks.allR:
 %.allR: %.Rscript
 	R --vanilla  < $<
 
