@@ -69,6 +69,7 @@ animal.look.Rout: R/look.R animal.rds
 
 ## Branching: 
 ## Try config files for now
+## Branch stuff does not chain properly, presumably some specific patch
 
 .PRECIOUS: branch/%.Rout branch/%.rda
 branch/%.rda: $(lscheck)
@@ -80,6 +81,8 @@ pipeRimplicit += dat
 %.dat.Rout: R/dat.R animal.rds branch/%.rda
 	$(rrule)
 
+## 2024 Oct 16 (Wed) we think we left this behind and instead inserted the later date for some of the checks.
+## Would be better to have that later in a "branch" file and call it by name…
 ## branch/SD_new_dogs.R
 
 ######################################################################
@@ -120,10 +123,10 @@ pipeRimplicit += incCheck
 ## Process incubation periods
 ## Produce .check.csv for the checkers
 ## Make some plots!
-## .Rout.csv for export to the next project (e.g., link)
+## .Rout.csv for export to the next project (via link)
 ## The top of this and the previous file should probably be an intro file
 ## Then we want separate files for checking and for censoring
-## SD_new_dogs.incubation.Rout: R/incubation.R
+## SD_dogs.incubation.Rout: R/incubation.R
 ## SD_dogs.incubation.check.csv: R/incubation.R
 ## SD_dogs.incubation.Rout.csv: R/incubation.R
 
@@ -158,7 +161,7 @@ pipeRimplicit += infCheck
 
 ## Curate output csvs
 
-## SD_new_dogs.allchecks.Rout: R/allchecks.R
+## SD_dogs.allchecks.Rout: R/allchecks.R
 pipeRimplicit += dat
 %.allchecks.Rout: %.dat.Rout %.IDCheck.Rout %.ageCheck.Rout %.suspectCheck.Rout %.outcomeCheck.Rout %.incCheck.Rout %.wildlifeCheck.Rout %.dateCheck.Rout %.symptomCheck.Rout %.infCheck.Rout %.incubation.Rout R/allchecks.R
 	$(rrule)
@@ -177,17 +180,17 @@ testsetup: dropsetup
 ## All-R version
 
 Sources += $(wildcard *.Rscript)
-## SD_new_dogs.allchecks.Rscript: SD_dogs.allchecks.pipeR.script makestuff/allR.pl
+## SD_dogs.allchecks.Rscript: SD_dogs.allchecks.pipeR.script makestuff/allR.pl
 %.allchecks.Rscript: %.allchecks.pipeR.script makestuff/allR.pl
 	$(PUSH)
 	echo 'system("rsync $*.*.csv outdir/$*/")' >> $@
 
-## SD_new_dogs.allchecks.allR:
+## SD_dogs.allchecks.allR:
 %.allR: %.Rscript
 	R --vanilla  < $<
 
 Ignore += *.allR.html
-## SD_new_dogs.report.allR.html: report.rmd
+## SD_dogs.report.allR.html: report.rmd
 %.report.allR.html: report.rmd %.allchecks.allR
 	Rscript --vanilla -e 'library("rmarkdown"); render("$(word 1, $(filter %.rmd %.Rmd, $^))", output_format="html_document", output_file="$@")' 
 

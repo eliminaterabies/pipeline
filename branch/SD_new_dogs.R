@@ -2,6 +2,6 @@ library(shellpipes)
 
 DistrictF <- "Serengeti"
 SpeciesF <- "Domestic dog"
-firstYear <- 2010
+firstYear <- 2020
 
 saveEnvironment()
